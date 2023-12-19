@@ -1,0 +1,58 @@
+package com.mycompany.arrayoperations;
+
+import javax.swing.JOptionPane;
+import java.util.Arrays;
+/**
+ *
+ * @author NCGC
+ */
+public class ArrayOperations {
+
+    public static void main(String[] args) {
+         // Get the size of the array from the user
+        int size = getInt("Enter the size of the array:");
+
+        // Create an array and populate it with user input
+        int[] numbers = new int[size];
+        for (int i = 0; i < size; i++) {
+            numbers[i] = getInt("Enter element " + (i + 1) + ":");
+        }
+
+        // Display the original array
+        showMessage("Original Array: " + Arrays.toString(numbers));
+
+        // Perform array operations
+        int sum = calculateSum(numbers);
+        double average = calculateAverage(numbers);
+
+        // Display the results
+        showMessage("Sum of the array: " + sum);
+        showMessage("Average of the array: " + average);
+    }
+
+    // Method to get an integer from the user using JOptionPane
+    private static int getInt(String message) {
+        String input = JOptionPane.showInputDialog(message);
+        return Integer.parseInt(input);
+    }
+
+    // Method to calculate the sum of an array of integers
+    private static int calculateSum(int[] array) {
+        int sum = 0;
+        for (int num : array) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    // Method to calculate the average of an array of integers
+    private static double calculateAverage(int[] array) {
+        int sum = calculateSum(array);
+        return (double) sum / array.length;
+    }
+
+    // Method to display a message using JOptionPane
+    private static void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
+}
